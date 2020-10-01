@@ -1,0 +1,65 @@
+<html>
+	<head>
+        <meta charset="utf-8">
+       
+		<title>Examen de prueba</title>
+	</head>
+	<body>
+        <h1>Inicio de html</h1>
+        <div class="container py-2">
+            <p class="lead">Ingrese productos</p>
+                <form>
+                    <input id="id" type="text" placeholder="" class="form-control my-2">
+                    <input id="name" type="text" placeholder="" class="form-control my-2">
+                    <input id="value" type="number" placeholder="" class="form-control my-2">
+                    <input id="discount" type="number" placeholder="" class="form-control my-2">
+                    <input id="stock" type="number" placeholder="" class="form-control my-2">
+                    <button id="boton" class="btn btn-success" type="reset" onclick="capturar()">Agregar</button>
+
+                </form>
+        </div>
+        <div class="container">
+            <table class="table" id="tabla">
+                <thead class="thead-inverse">
+                    <tr>
+                        <th>ID</th>
+                        <th>NAME</th>
+                        <th>VALUE</th>
+                        <th>DISCOUNT</th>
+                        <th>STOCK</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <script>
+            console.log("ingreso a captura");
+        function capturar(){
+            console.log("captuando");
+            function Produto(id, name, value, discount, stock){
+                this.id=id;
+                this.name=name;
+                this.value=value;
+                this.discount=discount;
+                this.stock=stock;
+            }
+            var idcap=document.getElementById("id").value;
+            var namecap=document.getElementById("name").value;
+            var valuecap=document.getElementById("value").value;
+            var discountcap=document.getElementById("discount").value;
+            var stockcap=document.getElementById("stock").value;
+            nuevoproducto= new Produto(idcap,namecap,valuecap,discountcap,stockcap);
+            console.log(nuevoproducto);
+            agregar();
+        }
+        var baseDatos=[];
+        function agregar(){
+            console.log("agregando");
+            baseDatos.push(nuevoproducto);
+            console.log(baseDatos);  
+            document.getElementById("tabla").innerHTML+='<tbody><td>'+nuevoproducto.id+'</td><td>'+nuevoproducto.name+'</td><td>'+nuevoproducto.value+'</td><td>'+nuevoproducto.discount+'</td><td>'+nuevoproducto.stock+'</td></tbody>';
+        };
+
+        </script>
+        
+	</body>
+</html>
